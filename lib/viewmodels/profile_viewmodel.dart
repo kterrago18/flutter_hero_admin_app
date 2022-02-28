@@ -6,7 +6,7 @@ class ProfileViewmodel extends ChangeNotifier {
         firstName: 'Stef',
         lastName: 'Patt',
         role: 'Flutterista',
-        //profileImageUrl: 'assets/profile_pics/person_stef.jpeg',
+        profileImageUrl: 'assets/images/profile_pics/person_stef.jpeg',
         points: 100,
         darkMode: _darkMode,
       );

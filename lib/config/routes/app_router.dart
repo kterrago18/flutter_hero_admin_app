@@ -75,8 +75,8 @@ class AppRouter extends RouterDelegate
         //       onCreate: (_) {
         //         // No create
         //       }),
-        // if (profileManager.didSelectUser)
-        //   ProfileScreen.page(profileManager.getUser),
+        if (profileViewmodel.didSelectUser)
+          ProfileView.page(profileViewmodel.getUser),
         // if (loginStateManager.didCreateAccountSelected)
         //   CreateAccountScreen.page(),
         if (loginStateManager.didForgotPasswordSelected)

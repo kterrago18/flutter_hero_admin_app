@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hero_admin_app/config/themes/hero_theme.dart';
+import 'package:flutter_hero_admin_app/constants/colours.dart';
 import 'package:flutter_hero_admin_app/models/models.dart';
+import 'package:flutter_hero_admin_app/ui/views/views.dart';
 import 'package:flutter_hero_admin_app/viewmodels/viewmodels.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:provider/provider.dart';
 
@@ -31,10 +34,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   static List<Widget> pages = [
-    Container(
-      child: const Center(child: Text('Task')),
-      color: Colors.blue,
-    ),
+    const TasksView(),
     Container(
       child: const Center(child: Text('Services')),
       color: Colors.green,
@@ -83,23 +83,23 @@ class _HomeViewState extends State<HomeView> {
                 Theme.of(context).textSelectionTheme.selectionColor,
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.explore),
+                icon: FaIcon(FontAwesomeIcons.clipboardCheck),
                 label: 'Task',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.book),
+                icon: FaIcon(FontAwesomeIcons.solidBell),
                 label: 'Services',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.list),
+                icon: FaIcon(FontAwesomeIcons.fileInvoice),
                 label: 'Bookings',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.list),
+                icon: FaIcon(FontAwesomeIcons.solidFile),
                 label: 'Reports',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.list),
+                icon: FaIcon(FontAwesomeIcons.solidComment),
                 label: 'Chats',
               ),
             ],
@@ -115,7 +115,8 @@ class _HomeViewState extends State<HomeView> {
       child: GestureDetector(
         child: const CircleAvatar(
           backgroundColor: Colors.transparent,
-          //backgroundImage: AssetImage('assets/profile_pics/person_stef.jpeg'),
+          backgroundImage:
+              AssetImage('assets/images/profile_pics/person_stef.jpeg'),
         ),
         onTap: () {
           Provider.of<ProfileViewmodel>(context, listen: false)

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hero_admin_app/constants/constants.dart';
 import 'package:flutter_hero_admin_app/models/models.dart';
+import 'package:flutter_hero_admin_app/services/authentication_service.dart';
 
 import 'package:provider/provider.dart';
 
@@ -128,38 +129,42 @@ class _LoginViewState extends State<LoginView> {
 
   Widget buildButton(BuildContext context, TextEditingController email,
       TextEditingController password) {
+    final appStateManager = Provider.of<AppStateManager>(context, listen: true);
     return SizedBox(
       height: 55,
       child: MaterialButton(
         color: kPrimaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-        child: const Text(
-          'Login',
-          style: TextStyle(color: Colors.white),
-        ),
+        child: appStateManager.appState == AppState.busy
+            ? const CircularProgressIndicator()
+            : const Text(
+                'Login',
+                style: TextStyle(color: Colors.white),
+              ),
         onPressed: () async {
-          final appStateManager =
-              Provider.of<AppStateManager>(context, listen: false);
-
           if (_formKey.currentState!.validate()) {
             await appStateManager.login(email.text, password.text);
             print('## email: ${email.text}, pwd: ${password.text}');
-            if (!appStateManager.isEmailExist) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                setSnackBarContent('The account you entered does not exist.'),
-              );
+            // if (!appStateManager.isEmailExist) {
+            //   ScaffoldMessenger.of(context).showSnackBar(
+            //     setSnackBarContent('The account you entered does not exist.'),
+            //   );
 
-              return;
-            }
-            if (!appStateManager.isAuthorized && appStateManager.isEmailExist) {
+            //   return;
+            // }
+            if (!appStateManager.isAuthorized) {
               ScaffoldMessenger.of(context).showSnackBar(
                 setSnackBarContent(
                     'Wrong credentials! Incorrect email address or password'),
               );
               return;
             }
+            if (appStateManager.isSignedUp) {
+              print('signed up succesfull');
+              return;
+            }
             if (appStateManager.isLoggedIn) {
-              print('succesfull');
+              print('logged in succesfull');
               return;
             }
           } else {

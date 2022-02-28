@@ -67,6 +67,7 @@ class HeroTheme {
           (states) => Colors.black,
         ),
       ),
+      //  canvasColor: kPrimaryColor,
       appBarTheme: const AppBarTheme(
         foregroundColor: Colors.white,
         backgroundColor: kPrimaryColor,
