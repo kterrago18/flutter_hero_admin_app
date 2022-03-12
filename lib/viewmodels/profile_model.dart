@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hero_admin_app/models/models.dart';
 
-class ProfileViewmodel extends ChangeNotifier {
+class ProfileModel extends ChangeNotifier {
   User get getUser => User(
         firstName: 'Stef',
         lastName: 'Patt',

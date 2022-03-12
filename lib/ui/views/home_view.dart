@@ -35,10 +35,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   static List<Widget> pages = [
     const TasksView(),
-    Container(
-      child: const Center(child: Text('Services')),
-      color: Colors.green,
-    ),
+    const ServicesView(),
     Container(
       child: const Center(child: Text('Bookings')),
       color: Colors.red,
@@ -55,7 +52,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AppStateManager>(
+    return Consumer<AppsModel>(
       builder: (context, appStateManager, child) {
         return Scaffold(
           appBar: AppBar(
@@ -119,8 +116,7 @@ class _HomeViewState extends State<HomeView> {
               AssetImage('assets/images/profile_pics/person_stef.jpeg'),
         ),
         onTap: () {
-          Provider.of<ProfileViewmodel>(context, listen: false)
-              .tapOnProfile(true);
+          Provider.of<ProfileModel>(context, listen: false).tapOnProfile(true);
         },
       ),
     );

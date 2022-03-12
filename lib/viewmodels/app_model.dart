@@ -22,7 +22,7 @@ class HeroClientTab {
 
 enum AppState { idle, busy }
 
-class AppStateManager extends ChangeNotifier {
+class AppsModel extends ChangeNotifier {
   bool _initialized = false;
   bool _isEmailExist = false;
   bool _isAuthorized = false;
@@ -72,8 +72,8 @@ class AppStateManager extends ChangeNotifier {
       _isAuthorized = true;
       _loggedIn = true;
     } on CustomException catch (e) {
-      _loggedIn = true;
-      _isAuthorized = true;
+      _loggedIn = false;
+      _isAuthorized = false;
       if (kDebugMode) {
         print(e.cause);
       }

@@ -9,10 +9,10 @@ class AppRouter extends RouterDelegate
   @override
   final GlobalKey<NavigatorState> navigatorKey;
 
-  final AppStateManager appStateManager;
+  final AppsModel appStateManager;
   final LoginStateManager loginStateManager;
   // final GroceryManager groceryManager;
-  final ProfileViewmodel profileViewmodel;
+  final ProfileModel profileViewmodel;
 
   AppRouter({
     required this.appStateManager,

@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_hero_admin_app/constants/app_spacing.dart';
 import 'package:flutter_hero_admin_app/constants/colours.dart';
-import 'package:flutter_hero_admin_app/viewmodels/profile_viewmodel.dart';
+import 'package:flutter_hero_admin_app/viewmodels/profile_model.dart';
 import 'package:provider/provider.dart';
 //import 'package:url_launcher/url_launcher.dart';
 
@@ -36,7 +36,7 @@ class _ProfileViewState extends State<ProfileView> {
         leading: IconButton(
           icon: const Icon(Icons.close),
           onPressed: () {
-            Provider.of<ProfileViewmodel>(context, listen: false)
+            Provider.of<ProfileModel>(context, listen: false)
                 .tapOnProfile(false);
           },
         ),
@@ -124,10 +124,10 @@ class _ProfileViewState extends State<ProfileView> {
           child: const Text('LOG OUT'),
           onPressed: () {
             // 1
-            Provider.of<ProfileViewmodel>(context, listen: false)
+            Provider.of<ProfileModel>(context, listen: false)
                 .tapOnProfile(false);
             // 2
-            Provider.of<AppStateManager>(context, listen: false).logout();
+            Provider.of<AppsModel>(context, listen: false).logout();
           },
         ),
       ],
@@ -156,7 +156,7 @@ class _ProfileViewState extends State<ProfileView> {
           Switch(
             value: widget.user.darkMode,
             onChanged: (value) {
-              Provider.of<ProfileViewmodel>(context, listen: false).darkMode =
+              Provider.of<ProfileModel>(context, listen: false).darkMode =
                   value;
             },
           )

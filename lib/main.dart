@@ -20,9 +20,9 @@ class HeroAdmin extends StatefulWidget {
 }
 
 class _HeroAdminState extends State<HeroAdmin> {
-  final _appStateManager = AppStateManager();
+  final _appStateManager = AppsModel();
   final _createAccountManager = LoginStateManager();
-  final _profileViewmodel = ProfileViewmodel();
+  final _profileViewmodel = ProfileModel();
   late AppRouter _appRouter;
 
   @override
@@ -44,7 +44,7 @@ class _HeroAdminState extends State<HeroAdmin> {
         ChangeNotifierProvider(create: (context) => _createAccountManager),
         ChangeNotifierProvider(create: (context) => _profileViewmodel)
       ],
-      child: Consumer<ProfileViewmodel>(
+      child: Consumer<ProfileModel>(
         builder: (context, profileViewmodel, child) {
           ThemeData theme = HeroTheme.light();
           // if (profileViewmodel.darkMode) {

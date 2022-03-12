@@ -21,7 +21,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    Provider.of<AppStateManager>(context, listen: false).initializeApp();
+    Provider.of<AppsModel>(context, listen: false).initializeApp();
   }
 
   @override

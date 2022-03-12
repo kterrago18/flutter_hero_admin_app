@@ -1,1 +1,1 @@
-export 'profile_viewmodel.dart';
+export 'profile_model.dart';

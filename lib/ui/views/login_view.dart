@@ -129,7 +129,7 @@ class _LoginViewState extends State<LoginView> {
 
   Widget buildButton(BuildContext context, TextEditingController email,
       TextEditingController password) {
-    final appStateManager = Provider.of<AppStateManager>(context, listen: true);
+    final appStateManager = Provider.of<AppsModel>(context, listen: false);
     return SizedBox(
       height: 55,
       child: MaterialButton(
